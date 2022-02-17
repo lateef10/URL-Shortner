@@ -32,6 +32,10 @@ namespace URLShortnerAPI
         {
             services.AddDbContext<UrlShortnerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString(Constants.GetConnectionString)));
             services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "URLShortnerAPI", Version = "v1" });
