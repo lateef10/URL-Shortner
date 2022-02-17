@@ -9,6 +9,10 @@ namespace URLShortnerAPI.AppDbContext
 {
     public class UrlShortnerDbContext : DbContext
     {
+        public UrlShortnerDbContext()
+        {
+        }
+
         public UrlShortnerDbContext(DbContextOptions<UrlShortnerDbContext> options) : base(options)
         {
         }
