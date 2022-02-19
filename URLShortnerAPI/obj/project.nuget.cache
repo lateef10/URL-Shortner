@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "N9rPwORG4CcXbjOvOCd+kHNhkZne/qW9nddoFyRXwbgc6gsMu83sgWua3s1REWdhDYQaA8pH6f3eYM7mdCKosw==",
+  "dgSpecHash": "Wj/udWM8CeOjidCKSnmSkrwvx9VCrpARidzqGxOxkgsldcsl8RtwxdmZxCgi54/OB5T8rCQ6PSsL2TQQIscdCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lateef\\Desktop\\Working Copy\\URL-Shortner\\URLShortnerAPI\\URLShortnerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lateef\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Lateef\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\Lateef\\.nuget\\packages\\base62\\1.2.0\\base62.1.2.0.nupkg.sha512",
     "C:\\Users\\Lateef\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
     "C:\\Users\\Lateef\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
     "C:\\Users\\Lateef\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",

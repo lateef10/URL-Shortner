@@ -27,6 +27,15 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Base62/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Base62.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Base62.dll": {}
+        }
+      },
       "FluentValidation/10.3.6": {
         "type": "package",
         "compile": {
@@ -2371,6 +2380,26 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "Base62/1.2.0": {
+      "sha512": "Z5wYTl1kOXwrL/W2OvlHRRg2wrgTOMbNuSNzKpBDCrjLggjWMjhPYQ8Z1Q5jonlRqvBUI3zrkIg9T/b9mQbbAA==",
+      "type": "package",
+      "path": "base62/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "base62.1.2.0.nupkg.sha512",
+        "base62.nuspec",
+        "lib/net5.0/Base62.dll",
+        "lib/net5.0/Base62.xml",
+        "lib/netstandard1.3/Base62.dll",
+        "lib/netstandard1.3/Base62.xml",
+        "lib/netstandard2.0/Base62.dll",
+        "lib/netstandard2.0/Base62.xml",
+        "lib/netstandard2.1/Base62.dll",
+        "lib/netstandard2.1/Base62.xml"
       ]
     },
     "FluentValidation/10.3.6": {
@@ -7840,6 +7869,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
+      "Base62 >= 1.2.0",
       "FluentValidation.AspNetCore >= 10.3.6",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.1",
       "Microsoft.AspNet.WebApi.Core >= 5.2.7",
@@ -7891,6 +7921,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[11.0.0, )"
+          },
+          "Base62": {
+            "target": "Package",
+            "version": "[1.2.0, )"
           },
           "FluentValidation.AspNetCore": {
             "target": "Package",
