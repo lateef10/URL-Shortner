@@ -17,6 +17,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using URLShortnerAPI.AppDbContext;
 using URLShortnerAPI.Common;
+using URLShortnerAPI.Repositories;
+using URLShortnerAPI.Repositories.IRepositories;
 
 namespace URLShortnerAPI
 {
@@ -33,6 +35,10 @@ namespace URLShortnerAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UrlShortnerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString(Constants.GetConnectionString)));
+
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IUrlRepository, UrlRepository>();
+
             services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

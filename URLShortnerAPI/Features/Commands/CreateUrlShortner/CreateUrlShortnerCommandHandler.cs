@@ -9,7 +9,7 @@ using URLShortnerAPI.Repositories.IRepositories;
 
 namespace URLShortnerAPI.Features.Commands.CreateUrlShortner
 {
-    public class CreateUrlShortnerCommandHandler : IRequestHandler<CreateUrlShortnerCommand, string>
+    public class CreateUrlShortnerCommandHandler : IRequestHandler<CreateUrlShortnerCommand, URL>
     {
         private readonly IUrlRepository _urlRepository;
 
@@ -18,11 +18,11 @@ namespace URLShortnerAPI.Features.Commands.CreateUrlShortner
             _urlRepository = urlRepository;
         }
 
-        public async Task<string> Handle(CreateUrlShortnerCommand request, CancellationToken cancellationToken)
+        public async Task<URL> Handle(CreateUrlShortnerCommand request, CancellationToken cancellationToken)
         {
             var result = await _urlRepository.AddUrl(request.uRL);
 
-            return result.URLCode;
+            return result;
         }
     }
 }

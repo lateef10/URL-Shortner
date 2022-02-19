@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using URLShortnerAPI.AppDbContext;
 
 namespace URLShortnerAPI.Migrations
 {
     [DbContext(typeof(UrlShortnerDbContext))]
-    partial class UrlShortnerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220219044940_updateseed")]
+    partial class updateseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

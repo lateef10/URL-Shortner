@@ -12,7 +12,7 @@ namespace URLShortnerAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1000000, 1"),
+                        .Annotation("SqlServer:Identity", "100, 1"),
                     OriginalUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     URLCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),

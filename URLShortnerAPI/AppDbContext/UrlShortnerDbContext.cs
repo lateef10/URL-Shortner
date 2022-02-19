@@ -52,9 +52,9 @@ namespace URLShortnerAPI.AppDbContext
 
             modelBuilder.Entity<URL>().HasData(new URL
             {
-                Id = 1000000,
-                OriginalUrl = "https://google.com",
-                URLCode = "1a",
+                Id = 100,
+                OriginalUrl = "google.com",
+                URLCode = "11PVWGSpX7",
                 CreatedDate = DateTime.Now
             });
 
