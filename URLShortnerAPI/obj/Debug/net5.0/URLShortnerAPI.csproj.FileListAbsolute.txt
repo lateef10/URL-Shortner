@@ -69,3 +69,9 @@ C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\obj\Debug\net5.
 C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\obj\Debug\net5.0\ref\URLShortnerAPI.dll
 C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\obj\Debug\net5.0\URLShortnerAPI.pdb
 C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\obj\Debug\net5.0\URLShortnerAPI.genruntimeconfig.cache
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\Base62.dll
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Lateef\Desktop\Working Copy\URL-Shortner\URLShortnerAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

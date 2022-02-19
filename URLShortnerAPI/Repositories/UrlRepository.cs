@@ -51,9 +51,27 @@ namespace URLShortnerAPI.Repositories
         /// </summary>
         /// <param name="urlEntity"></param>
         /// <returns></returns>
-        public Task<URL> AddUrl(URL urlEntity)
+        public async Task<URL> AddUrl(URL urlEntity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var urlExist = await GetUrlByOriginalUrl(urlEntity.OriginalUrl);
+                if (urlExist != null)
+                {
+                    return urlExist;
+                }
+                var lastRecord = await _dbContext.uRLs.LastAsync();
+                int nextId = lastRecord.Id + 1;
+
+                var base62Converter = new Base62Converter();
+                var encoded = base62Converter.Encode(nextId.ToString());
+                urlEntity.URLCode = encoded;
+                return await AddAsync(urlEntity);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

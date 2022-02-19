@@ -20,7 +20,7 @@ namespace URLShortnerAPI.Features.Commands.CreateUrlShortner
 
         public async Task<string> Handle(CreateUrlShortnerCommand request, CancellationToken cancellationToken)
         {
-            var result = await _urlRepository.AddAsync(request.uRL);
+            var result = await _urlRepository.AddUrl(request.uRL);
 
             return result.URLCode;
         }
