@@ -19,6 +19,7 @@ using URLShortnerAPI.AppDbContext;
 using URLShortnerAPI.Common;
 using URLShortnerAPI.Repositories;
 using URLShortnerAPI.Repositories.IRepositories;
+using URLShortnerAPI.UnitOfWorkRepo;
 
 namespace URLShortnerAPI
 {
@@ -36,6 +37,7 @@ namespace URLShortnerAPI
         {
             services.AddDbContext<UrlShortnerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString(Constants.GetConnectionString)));
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUrlRepository, UrlRepository>();
 

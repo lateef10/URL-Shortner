@@ -8,7 +8,7 @@ using URLShortnerAPI.Models;
 using URLShortnerAPI.Repositories;
 using URLShortnerAPI.Repositories.IRepositories;
 
-namespace URLShortnerAPI.UnitOfWork
+namespace URLShortnerAPI.UnitOfWorkRepo
 {
     public class UnitOfWork : IUnitOfWork
     {

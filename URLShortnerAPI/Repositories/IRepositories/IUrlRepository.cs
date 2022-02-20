@@ -6,9 +6,9 @@ using URLShortnerAPI.Models;
 
 namespace URLShortnerAPI.Repositories.IRepositories
 {
-    public interface IUrlRepository : IBaseRepository<URL>
+    public interface IUrlRepository
     {
-        Task<URL> GetUrlByOriginalUrl(string originalUrl);
+        Task<IEnumerable<URL>> GetUrlByOriginalUrl(string originalUrl);
         Task<URL> GetOriginalUrlByUrlCode(string urlCode);
         Task<URL> AddUrl(URL urlEntity);
     }

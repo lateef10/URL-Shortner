@@ -23,6 +23,10 @@ namespace URLShortnerAPI.Repositories
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
+        public async Task<IReadOnlyList<T>> GetAllOrderByAsync()
+        {
+            return await _dbContext.Set<T>().OrderBy(p => p.Id).ToListAsync();
+        }
 
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
         {

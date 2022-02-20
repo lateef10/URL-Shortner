@@ -7,24 +7,18 @@ using System.Threading.Tasks;
 using URLShortnerAPI.AppDbContext;
 using URLShortnerAPI.Models;
 using URLShortnerAPI.Repositories.IRepositories;
+using URLShortnerAPI.UnitOfWorkRepo;
 
 namespace URLShortnerAPI.Repositories
 {
-    public class UrlRepository : BaseRepository<URL>, IUrlRepository
+    public class UrlRepository : IUrlRepository
     {
-        public UrlRepository(UrlShortnerDbContext dbContext) : base(dbContext)
+        private readonly IUnitOfWork _unitOfWork;
+        public UrlRepository(IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
         }
-        /// <summary>
-        /// Goal: Get original Url by original url. If its not empty then simply return the code to user
-        /// </summary>
-        /// <param name="originalUrl"></param>
-        /// <returns></returns>
-        public async Task<URL> GetUrlByOriginalUrl(string originalUrl)
-        {
-            var url = await _dbContext.uRLs.FirstOrDefaultAsync(p => p.OriginalUrl == originalUrl);
-            return url;
-        }
+
         /// <summary>
         /// Goal: Get the original url to redirect to
         /// </summary>
@@ -37,13 +31,24 @@ namespace URLShortnerAPI.Repositories
                 var base62Converter = new Base62Converter();
                 int decoded = Convert.ToInt32(base62Converter.Decode(urlCode));
 
-                var url = await _dbContext.uRLs.FirstOrDefaultAsync(p => p.Id == decoded);
+                var url = await _unitOfWork.UrlRepository.GetByIdAsync(decoded); //_dbContext.uRLs.FirstOrDefaultAsync(p => p.Id == decoded);
                 return url;
             }
             catch(Exception ex)
             {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Goal: Get original Url by original url. If its not empty then simply return the code to user
+        /// </summary>
+        /// <param name="originalUrl"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<URL>> GetUrlByOriginalUrl(string originalUrl)
+        {
+            var url = await _unitOfWork.UrlRepository.GetAsync(p => p.OriginalUrl == originalUrl); //await _dbContext.uRLs.FirstOrDefaultAsync(p => p.OriginalUrl == originalUrl);
+            return url;
         }
 
         /// <summary>
@@ -58,15 +63,15 @@ namespace URLShortnerAPI.Repositories
                 var urlExist = await GetUrlByOriginalUrl(urlEntity.OriginalUrl);
                 if (urlExist != null)
                 {
-                    return urlExist;
+                    return urlExist.FirstOrDefault();
                 }
-                var lastRecord = await _dbContext.uRLs.OrderBy(p => p.Id).LastAsync();
-                int nextId = lastRecord.Id + 1;
+                var lastRecord = await _unitOfWork.UrlRepository.GetAllAsync();  //_dbContext.uRLs.OrderBy(p => p.Id).LastAsync();
+                int nextId = lastRecord.OrderBy(p=>p.Id).Last().Id + 1;
 
                 var base62Converter = new Base62Converter();
                 var encoded = base62Converter.Encode(nextId.ToString());
                 urlEntity.URLCode = encoded;
-                return await AddAsync(urlEntity);
+                return await _unitOfWork.UrlRepository.AddAsync(urlEntity);
             }
             catch
             {

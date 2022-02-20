@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using URLShortnerAPI.Models;
 using URLShortnerAPI.Repositories.IRepositories;
 
-namespace URLShortnerAPI.UnitOfWork
+namespace URLShortnerAPI.UnitOfWorkRepo
 {
     public interface IUnitOfWork : IDisposable
     {
