@@ -7,7 +7,7 @@ using URLShortnerAPI.Models;
 
 namespace URLShortnerAPI.Features.Queries.GetUrlByOriginalUrl
 {
-    public record GetUrlByOriginalUrlQuery(string originalUrl) : IRequest<URL>
+    public record GetUrlByOriginalUrlQuery(string originalUrl) : IRequest<IEnumerable<URL>>
     {
     }
 }

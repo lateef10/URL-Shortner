@@ -10,8 +10,8 @@ using URLShortnerAPI.AppDbContext;
 namespace URLShortnerAPI.Migrations
 {
     [DbContext(typeof(UrlShortnerDbContext))]
-    [Migration("20220216005122_lenghtUpdate")]
-    partial class lenghtUpdate
+    [Migration("20220220024957_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,6 +55,15 @@ namespace URLShortnerAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("uRLs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            CreatedDate = new DateTime(2022, 2, 19, 21, 49, 57, 161, DateTimeKind.Local).AddTicks(1694),
+                            OriginalUrl = "google.com",
+                            URLCode = "11PVWGSpX7"
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -58,7 +58,7 @@ namespace URLShortnerAPI.Migrations
                         new
                         {
                             Id = 100,
-                            CreatedDate = new DateTime(2022, 2, 18, 23, 49, 40, 361, DateTimeKind.Local).AddTicks(2522),
+                            CreatedDate = new DateTime(2022, 2, 19, 21, 49, 57, 161, DateTimeKind.Local).AddTicks(1694),
                             OriginalUrl = "google.com",
                             URLCode = "11PVWGSpX7"
                         });

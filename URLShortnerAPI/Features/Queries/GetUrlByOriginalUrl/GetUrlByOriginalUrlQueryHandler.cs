@@ -9,7 +9,7 @@ using URLShortnerAPI.Repositories.IRepositories;
 
 namespace URLShortnerAPI.Features.Queries.GetUrlByOriginalUrl
 {
-    public class GetUrlByOriginalUrlQueryHandler : IRequestHandler<GetUrlByOriginalUrlQuery, URL>
+    public class GetUrlByOriginalUrlQueryHandler : IRequestHandler<GetUrlByOriginalUrlQuery, IEnumerable<URL>>
     {
         private readonly IUrlRepository _urlRepository;
 
@@ -18,7 +18,7 @@ namespace URLShortnerAPI.Features.Queries.GetUrlByOriginalUrl
             _urlRepository = urlRepository;
         }
 
-        public async Task<URL> Handle(GetUrlByOriginalUrlQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<URL>> Handle(GetUrlByOriginalUrlQuery request, CancellationToken cancellationToken)
         {
             return await _urlRepository.GetUrlByOriginalUrl(request.originalUrl);
         }

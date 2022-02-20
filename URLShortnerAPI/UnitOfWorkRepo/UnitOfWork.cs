@@ -15,9 +15,10 @@ namespace URLShortnerAPI.UnitOfWorkRepo
         private readonly UrlShortnerDbContext _dbContext = null;
         private IBaseRepository<URL> _urlRepository;
 
-        public UnitOfWork()
+        public UnitOfWork(UrlShortnerDbContext dbContext)
         {
-            _dbContext = new UrlShortnerDbContext();
+            //_dbContext = new UrlShortnerDbContext();
+            _dbContext = dbContext;
         }
 
         public IBaseRepository<URL> UrlRepository

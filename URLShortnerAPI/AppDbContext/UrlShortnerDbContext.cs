@@ -9,10 +9,6 @@ namespace URLShortnerAPI.AppDbContext
 {
     public class UrlShortnerDbContext : DbContext
     {
-        public UrlShortnerDbContext()
-        {
-        }
-
         public UrlShortnerDbContext(DbContextOptions<UrlShortnerDbContext> options) : base(options)
         {
         }
@@ -54,7 +50,7 @@ namespace URLShortnerAPI.AppDbContext
             {
                 Id = 100,
                 OriginalUrl = "google.com",
-                URLCode = "11PVWGSpX7",
+                URLCode = "DWbY",
                 CreatedDate = DateTime.Now
             });
 

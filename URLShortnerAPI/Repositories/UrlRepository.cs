@@ -31,7 +31,7 @@ namespace URLShortnerAPI.Repositories
                 var base62Converter = new Base62Converter();
                 int decoded = Convert.ToInt32(base62Converter.Decode(urlCode));
 
-                var url = await _unitOfWork.UrlRepository.GetByIdAsync(decoded); //_dbContext.uRLs.FirstOrDefaultAsync(p => p.Id == decoded);
+                var url = await _unitOfWork.UrlRepository.GetByIdAsync(decoded);
                 return url;
             }
             catch(Exception ex)
@@ -47,7 +47,7 @@ namespace URLShortnerAPI.Repositories
         /// <returns></returns>
         public async Task<IEnumerable<URL>> GetUrlByOriginalUrl(string originalUrl)
         {
-            var url = await _unitOfWork.UrlRepository.GetAsync(p => p.OriginalUrl == originalUrl); //await _dbContext.uRLs.FirstOrDefaultAsync(p => p.OriginalUrl == originalUrl);
+            var url = await _unitOfWork.UrlRepository.GetAsync(p => p.OriginalUrl == originalUrl);
             return url;
         }
 
@@ -61,7 +61,7 @@ namespace URLShortnerAPI.Repositories
             try
             {
                 var urlExist = await GetUrlByOriginalUrl(urlEntity.OriginalUrl);
-                if (urlExist != null)
+                if (urlExist.Count() > 0)
                 {
                     return urlExist.FirstOrDefault();
                 }

@@ -68,6 +68,7 @@ namespace URLShortnerAPI.Repositories
 
         public async Task<T> AddAsync(T entity)
         {
+            entity.CreatedDate = DateTime.Now;
             _dbContext.Set<T>().Add(entity);
             await _dbContext.SaveChangesAsync();
             return entity;
