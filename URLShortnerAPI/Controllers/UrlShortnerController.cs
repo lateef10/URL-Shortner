@@ -13,7 +13,7 @@ using URLShortnerAPI.Models.Dtos;
 
 namespace URLShortnerAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("")]
     [ApiController]
     public class UrlShortnerController : ControllerBase
     {
@@ -26,10 +26,12 @@ namespace URLShortnerAPI.Controllers
             _mapper = mapper;
         }
 
+        [Route("{urlCode}")]
         [HttpGet]
         public async Task<ActionResult<URL>> GetOriginalUrlByUrlCode(string urlCode)
         {
             var originalUrl = await _mediator.Send(new GetOriginalUrlByUrlCodeQuery(urlCode));
+
             return Ok(_mapper.Map<URLDto>(originalUrl));
         }
 
