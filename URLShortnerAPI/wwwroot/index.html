@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>URL Shortner</title>
+</head>
+
+<body>
+    <div class="container col-6">
+        <h1 class="display-3 text-center my-4">URL Shortner</h1>
+
+        <div id="alertSuccess" class="alert alert-success">
+            <strong>Success</strong> <label id="successMessage">Url Created</label>
+        </div>
+
+        <div id="alertDanger" class="alert alert-danger">
+            <strong>Danger</strong> <label id="dangerMessage">Error occured: </label>
+        </div>
+
+        <div id="registration">
+            <div class="form-group">
+                <label for="originalUrl">Enter your URL</label>
+                <input class="form-control form-control-lg" type="text" id="originalUrl" placeholder="Enter a long URL (e.g http://mywebsite.com)">
+            </div>
+        </div>
+
+        <div>
+            <button id="register" class="btn btn-primary btn-block" type="submit">Create a short URL</button>
+        </div>
+
+    </div>
+</body>
+<script>
+    var registerButtion = document.getElementById("register");
+    var originalUrl = document.getElementById("originalUrl");
+    var successBox = document.getElementById("alertSuccess");
+    var dangerBox = document.getElementById("alertDanger");
+    var dangerMessage = document.getElementById("dangerMessage");
+    var successMessage = document.getElementById("successMessage");
+
+    successBox.style.display = 'none';
+    dangerBox.style.display = 'none';
+
+    registerButtion.onclick = function () {
+        successBox.style.display = 'none';
+        dangerBox.style.display = 'none';
+
+        if (originalUrl.value == "") {
+            dangerMessage.innerHTML = "Please Enter a URL";
+            dangerBox.style.display = 'block';
+        }
+        else {
+            (async () => {
+                const rawResponse = await fetch('https://localhost:44314', {
+                    method: 'post',
+                    body: JSON.stringify({ originalUrl: originalUrl.value }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                console.log(rawResponse);
+
+                const content = await rawResponse.json();
+
+                if (content.errors) {
+                    dangerMessage.innerHTML = content.errors.OriginalUrl;
+                    dangerBox.style.display = 'block';
+                    console.log(content.errors.OriginalUrl);
+                }
+                else {
+
+                    successMessage.innerHTML = "Here is your new URL - https://localhost:44314/" + content.urlCode;
+                    successBox.style.display = 'block';
+                }
+            })();
+        }
+    };
+
+</script>

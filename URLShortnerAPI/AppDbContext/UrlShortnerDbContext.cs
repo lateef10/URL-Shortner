@@ -49,7 +49,7 @@ namespace URLShortnerAPI.AppDbContext
             modelBuilder.Entity<URL>().HasData(new URL
             {
                 Id = 100,
-                OriginalUrl = "google.com",
+                OriginalUrl = "http://google.com",
                 URLCode = "DWbY",
                 CreatedDate = DateTime.Now
             });

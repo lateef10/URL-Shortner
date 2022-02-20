@@ -65,7 +65,7 @@ namespace URLShortnerAPI.Repositories
                 {
                     return urlExist.FirstOrDefault();
                 }
-                var lastRecord = await _unitOfWork.UrlRepository.GetAllAsync();  //_dbContext.uRLs.OrderBy(p => p.Id).LastAsync();
+                var lastRecord = await _unitOfWork.UrlRepository.GetAllAsync();
                 int nextId = lastRecord.OrderBy(p=>p.Id).Last().Id + 1;
 
                 var base62Converter = new Base62Converter();

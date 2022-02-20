@@ -32,7 +32,8 @@ namespace URLShortnerAPI.Controllers
         {
             var originalUrl = await _mediator.Send(new GetOriginalUrlByUrlCodeQuery(urlCode));
 
-            return Ok(_mapper.Map<URLDto>(originalUrl));
+            var redirect = _mapper.Map<URLDto>(originalUrl);
+            return Redirect(redirect.OriginalUrl);
         }
 
         [HttpPost]

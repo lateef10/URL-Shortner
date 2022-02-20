@@ -19,8 +19,13 @@ namespace URLShortnerAPI.ModelValidators
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
                 .NotEmpty().WithMessage(Constants.ErrorMsgOriginalUrl)
-                .Length(2, 500).WithMessage(Constants.ErrorMsgOriginalUrlExceedLimit);
+                .Length(2, 500).WithMessage(Constants.ErrorMsgOriginalUrlExceedLimit)
+                .Must(BeAValidURI).WithMessage("Invalid URL");
 
+        }
+        private bool BeAValidURI(string originalUrl)
+        {
+            return Uri.IsWellFormedUriString(originalUrl, UriKind.Absolute);
         }
     }
 }
