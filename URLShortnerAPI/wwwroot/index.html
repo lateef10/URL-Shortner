@@ -55,7 +55,7 @@
         }
         else {
             (async () => {
-                const rawResponse = await fetch('https://localhost:44314', {
+                const rawResponse = await fetch('https://localhost:5001', {
                     method: 'post',
                     body: JSON.stringify({ originalUrl: originalUrl.value }),
                     headers: {
@@ -76,7 +76,7 @@
                 }
                 else {
 
-                    successMessage.innerHTML = "Here is your new URL - https://localhost:44314/" + content.urlCode;
+                    successMessage.innerHTML = "Here is your new URL - https://localhost:5001/" + content.urlCode;
                     successBox.style.display = 'block';
                 }
             })();
